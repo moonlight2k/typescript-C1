@@ -1,12 +1,12 @@
 "use strict";
-let userInput;
-let userName;
-userInput = 4;
-userInput = 'deadt';
-if (typeof userInput === 'string') {
-    userName = userInput;
+const button = document.querySelector('button');
+function clickHandler(message) {
+    console.log('Clicked!  ' + message);
 }
-function generateError(message, code) {
-    throw { message: message, errorCode: code };
+if (button) {
+    button.addEventListener('mouseover', clickHandler.bind(null, 'Youre welcome'));
 }
-generateError('An error occured', 28);
+function sendAnalytics(data) {
+    console.log(data);
+}
+sendAnalytics('the data');
