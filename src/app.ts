@@ -1,21 +1,33 @@
-// const button = document.querySelector('button')!
+const username = 'max'
+//username = 'drajke'
+let age = 34
 
-// button.addEventListener('mouseover', () => {
-//   console.log('Clicked!!')
-// })
+age = 24
 
-const button = document.querySelector('button')
-
-function clickHandler(message: string) {
-  console.log('Clicked!  ' + message)
+function add1(a: number, b: number) {
+  let result
+  result = a + b
+  return result
 }
 
-if (button) {
-  button.addEventListener('mouseover', clickHandler.bind(null, 'Youre welcome'))
+// if (age > 24) {
+//     let isold = true
+// }
+
+// console.log(isold)
+
+const add2 = (a: number, b: number, c: number = 45) => a + b
+
+const printOutut: (a: number | string) => void = (Output) => console.log(Output)
+
+const button1 = document.querySelector('#cf')
+if (button1) {
+  button1.addEventListener('click', (event) => console.log(event))
 }
 
-function sendAnalytics(data: string) {
-  console.log(data)
-}
+printOutut(add2(34, 35))
 
-sendAnalytics('the data')
+const hobbies = ['sports', 'typing']
+const activeHobbies = ['boxing']
+
+activeHobbies.push(...hobbies)
