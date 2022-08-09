@@ -7,10 +7,30 @@ function add1(a, b) {
     result = a + b;
     return result;
 }
-const add2 = (a, b) => a + b;
+const add2 = (a, b, c = 45) => a + b;
 const printOutut = (Output) => console.log(Output);
 const button1 = document.querySelector('#cf');
 if (button1) {
     button1.addEventListener('click', (event) => console.log(event));
 }
 printOutut(add2(34, 35));
+const perrson = {
+    firstName: 'Dave',
+    age: 34,
+};
+const hobbies = ['sports', 'typing'];
+const activeHobbies = ['boxing'];
+activeHobbies.push(...hobbies);
+const add3 = (...number) => {
+    return number.reduce((curResult, curValue) => {
+        return curResult + curValue;
+    }, 0);
+};
+const add4 = (...number) => {
+    return number.reduce((curResult, curValue) => {
+        return curResult + curValue;
+    }, 0);
+};
+console.log(add3(23, 42, 323, 26, 65));
+const [hobby1, hobby2, ...remainingHobbies] = hobbies;
+const { firstName, age: date } = perrson;
