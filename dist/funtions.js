@@ -6,14 +6,14 @@ function printresult(num) {
     console.log('Result = ' + num);
 }
 function addAndHandle(Ni, Nii, cb) {
-    const result = Ni + Nii;
+    var result = Ni + Nii;
     cb(result);
     console.log(cb(result));
 }
 printresult(add(3, 45));
-let combineValues;
+var combineValues;
 combineValues = add;
 console.log(combineValues(2, 4));
-addAndHandle(3, 4, (resul) => {
+addAndHandle(3, 4, function (resul) {
     console.log(resul);
 });

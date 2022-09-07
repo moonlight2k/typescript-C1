@@ -1,5 +1,5 @@
 "use strict";
-const button = document.querySelector('#cl');
+var button = document.querySelector('#cl');
 function clickHandler(message) {
     console.log('Clicked!  ' + message);
 }

@@ -1,6 +1,6 @@
 "use strict";
-let userInput;
-let userName;
+var userInput;
+var userName;
 userInput = 4;
 userInput = 'deadt';
 if (typeof userInput === 'string') {

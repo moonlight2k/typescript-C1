@@ -1,54 +1,71 @@
-const username = 'max'
-//username = 'drajke'
-let age = 34
+class Department {
+    // private name: string;
+    // private id: number;
+    private employees: string[] = [];
 
-//age = 24
+    constructor(private name: string, private readonly id: number) {
+        //this.name = n;
+    }
 
-function add1(a: number, b: number) {
-  let result
-  result = a + b
-  return result
+    describe(this: Department) {
+        console.log(`${this.name} Department, ID : ${this.id}`);
+    }
+
+    addEmployee(...employee: string[]) {
+        this.employees.push(...employee);
+    }
+
+    printEmployeeInfo() {
+        console.log(this.employees.length);
+        console.log(this.employees);
+    }
 }
 
-if (age > 24) {
-    const isold = true
+class ItDepartment extends Department {
+    
+    constructor(id: number, private admins: string[]) {
+        super('TI', id);
+        this.admins = admins;
+    }
+
+    printAdmins() {
+        console.log(this.admins)
+    }
 }
 
-console.log(isold)
+class AccountingDept extends Department {
+    constructor(id: number, public reports: string[]) {
+        super('Accounting', id)
+        this.reports = reports;
+    }
 
-const add2 = (a: number, b: number, c: number = 45) => a + b
+    addReports(report: string) {
+        this.reports.push(report);
+    }
 
-const printOutut: (a: number | string) => void = (Output) => console.log(Output)
-
-const button1 = document.querySelector('#cf')
-if (button1) {
-  button1.addEventListener('click', (event) => console.log(event))
+    printReports() {
+        console.log(this.reports);
+    }
 }
 
-printOutut(add2(34, 35))
+const Accounting = new AccountingDept(24, []);
+const IT = new ItDepartment(17, ['mane', 'jake']);
 
-const perrson = {
-  firstName: 'Dave',
-  age: 34,
-}
 
-const hobbies = ['sports', 'typing']
-const activeHobbies = ['boxing']
+Accounting.addEmployee('Max');
+Accounting.addEmployee('Levi');
+Accounting.printEmployeeInfo();
+Accounting.describe();
+Accounting.addReports('Something went wrong')
+Accounting.printReports()
+IT.addEmployee('trank', 'steve', 'may');
+IT.printEmployeeInfo();
+IT.describe();
+IT.printAdmins()
 
-activeHobbies.push(...hobbies)
+//Accounting.employees[2] = 'Anna';
 
-const add3 = (...number: number[]) => {
-  return number.reduce((curResult, curValue) => {
-    return curResult + curValue
-  }, 0)
-}
-const add4 = (...number: [number, number, number]) => {
-  return number.reduce((curResult, curValue) => {
-    return curResult + curValue
-  }, 0)
-}
-console.log(add3(23, 42, 323, 26, 65))
 
-const [hobby1, hobby2, ...remainingHobbies] = hobbies
+// const AccountingCopy = { name: 'd', describe: Accounting.describe };
 
-const { firstName, age: date } = perrson
+// AccountingCopy.describe();
