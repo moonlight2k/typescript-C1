@@ -14,10 +14,11 @@
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "node dist/app.js",
-    "start": "nodemon src/express.ts",
+    "dev": "node dist/express.js",
+    "dev2": "ts-node-dev --respawn src/app.ts",
+    "start": "nodemon src/app.ts",
     "build": "tsc src/app.ts",
-    "start2": "lite-server"
+    "lite": "lite-server"
   },
   "repository": {
     "type": "git",
