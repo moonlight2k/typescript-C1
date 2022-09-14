@@ -1,71 +1,32 @@
-class Department {
-    // private name: string;
-    // private id: number;
-    private employees: string[] = [];
+//type AddFn = (a: number, b: number) => number;
+interface AddFn {
+    (a:number, b:number): number
+}
 
-    constructor(private name: string, private readonly id: number) {
-        //this.name = n;
-    }
+let addd: AddFn;
+addd = (n1: number, n2: number) => {
+    return n1 + n2;
+}
 
-    describe(this: Department) {
-        console.log(`${this.name} Department, ID : ${this.id}`);
-    }
+interface Named {
+    readonly name?: string;
+    outputName?: string;
+}
 
-    addEmployee(...employee: string[]) {
-        this.employees.push(...employee);
-    }
+interface Greetable extends Named {
+    greet?(phrase: string): void;
+};
 
-    printEmployeeInfo() {
-        console.log(this.employees.length);
-        console.log(this.employees);
+class Person implements Greetable {
+    age = 30;
+    constructor(public name?: string) { }
+    greet(phrase: string) {
+        if (this.name) {
+            console.log(phrase + '' + this.name);
+        }
     }
 }
 
-class ItDepartment extends Department {
-    
-    constructor(id: number, private admins: string[]) {
-        super('TI', id);
-        this.admins = admins;
-    }
+let user1 = new Person('maxinne');
 
-    printAdmins() {
-        console.log(this.admins)
-    }
-}
-
-class AccountingDept extends Department {
-    constructor(id: number, public reports: string[]) {
-        super('Accounting', id)
-        this.reports = reports;
-    }
-
-    addReports(report: string) {
-        this.reports.push(report);
-    }
-
-    printReports() {
-        console.log(this.reports);
-    }
-}
-
-const Accounting = new AccountingDept(24, []);
-const IT = new ItDepartment(17, ['mane', 'jake']);
-
-
-Accounting.addEmployee('Max');
-Accounting.addEmployee('Levi');
-Accounting.printEmployeeInfo();
-Accounting.describe();
-Accounting.addReports('Something went wrong')
-Accounting.printReports()
-IT.addEmployee('trank', 'steve', 'may');
-IT.printEmployeeInfo();
-IT.describe();
-IT.printAdmins()
-
-//Accounting.employees[2] = 'Anna';
-
-
-// const AccountingCopy = { name: 'd', describe: Accounting.describe };
-
-// AccountingCopy.describe();
+//user1.greet('hello there  ');

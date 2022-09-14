@@ -17,7 +17,7 @@
     "dev": "node dist/express.js",
     "dev2": "ts-node-dev --respawn src/app.ts",
     "start": "nodemon src/app.ts",
-    "build": "tsc src/app.ts",
+    "build": "tsc",
     "lite": "lite-server"
   },
   "repository": {

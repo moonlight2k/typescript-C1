@@ -16,7 +16,7 @@ const add: Add = x => {
 
 app.get('/', (req: Request, res: Response, next: NextFunction) => {
     add({a : 1, b : 2});
-    res.send('Hello');
+    res.send('Hello!');
 });
 
-app.listen(5555, () => console.log('Server'))
+app.listen(5555, () => console.log('Server Running!'))
