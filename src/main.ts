@@ -24,13 +24,18 @@ class User implements UserInterface {
 }
 
 class Admin extends User {
-  private editor: string
+  private editor?: string
 
-  setEditor(editor: string): void {
+  constructor(a: string, b: string, editor ?: string ) {
+    super(a,b)
     this.editor = editor
   }
 
-  getEditor(): string {
+  // setEditor(): void {
+  //   this.editor = editor
+  // }
+
+  getEditor() {
     return this.editor
   }
 }
