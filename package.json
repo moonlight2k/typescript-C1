@@ -1,15 +1,36 @@
 {
-  "name": "project-1",
+  "name": "typescript-c1",
   "version": "1.0.0",
   "description": "",
-  "main": "using-ts.js",
+  "main": "index.js",
+  "devDependencies": {
+    "@types/express": "^4.17.13",
+    "@types/node": "^18.7.16",
+    "lite-server": "^2.6.1",
+    "nodemon": "^2.0.19",
+    "ts-node": "^10.9.1",
+    "ts-node-dev": "^2.0.0",
+    "typescript": "^4.8.2"
+  },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "lite-server"
+    "dev": "node dist/express.js",
+    "dev2": "ts-node-dev --respawn src/app.ts",
+    "start": "nodemon src/app.ts",
+    "build": "tsc",
+    "lite": "lite-server"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/moonlight2k/typescript-C1.git"
   },
   "author": "",
   "license": "ISC",
-  "devDependencies": {
-    "lite-server": "^2.6.1"
+  "bugs": {
+    "url": "https://github.com/moonlight2k/typescript-C1/issues"
+  },
+  "homepage": "https://github.com/moonlight2k/typescript-C1#readme",
+  "dependencies": {
+    "express": "^4.18.1"
   }
 }
