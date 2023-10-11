@@ -28,5 +28,26 @@ class Person implements Greetable {
 }
 
 let user1 = new Person('maxinne');
-
 //user1.greet('hello there  ');
+
+// optional Interface properties
+interface Person {
+    age: number;
+    firstName: string;
+    lastName: string;
+}
+            
+let kindPerson : Partial<Person> = {};
+
+// required Interface properties
+interface Person1 {
+    age: number;
+    firstName: string;
+    lastName1?: string;
+}
+            
+let kindPerson1 : Required<Person1> = {
+    age: 1800,
+    firstName: "Santa",
+    lastName1: "Claus"
+};

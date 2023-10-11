@@ -1,4 +1,5 @@
-// Class Decorators And Decrator Factories
+// Class Decorators
+// Class Decorators take one argument (the class constructor)
 function Logger(logString: string) {
   return function (constructor: Function) {
     console.log(logString)
@@ -6,15 +7,15 @@ function Logger(logString: string) {
   }
 }
 
+// Decrator Factories (this returns the decorator function so that you can pass arguments
+// to the decorator factory)
 function withTemplate(template: string, hookId: string) {
-  return function <T extends { new (...args: any[]): { name: string } }>(
-    original: T,
-  ) {
+  return function <T extends { new (...args: any[]): { name: string } }>(original: T,) {
     return class extends original {
       constructor(...args: any[]) {
         super()
         console.log('Logging Template')
-        const hookEl = document.getElementById(hookId)
+        const hookEl = document.getElementById(hookId)! as HTMLElement
         if (hookEl) {
           hookEl.innerHTML = template
           hookEl.querySelector('h1')!.textContent = this.name
@@ -38,27 +39,43 @@ const pers = new Personz()
 
 console.log(pers)
 
+// Property decorators take 2 arguments (the target or prototype of the object if its an instance property
+// or constructor funtion if its a static property and the property name or identifier)
 function Log(target: any, propertyName: string | symbol) {
   console.log('Property Decorator')
+  console.log("Target : ")
   console.log(target)
+  console.log(propertyName)
 }
 
+// Accessor decorators take 3 arguments (the target or prototype of the object if its an instance property
+// or constructor funtion if its a static property , the name of accessor and the property discriptor)
 function Log2(target: any, name: string, descriptor: PropertyDescriptor) {
   console.log('Accessor Decorator')
+  console.log("Target : ")
   console.log(target)
   console.log(name)
+  console.log("Descriptor : ")
   console.log(descriptor)
 }
 
+// Method decorators take 3 arguments (the target or prototype of the object if its an instance property
+// or constructor funtion if its a static property , the name of the method and the property discriptor)
 function Log3(target: any, name: string | symbol, descriptor: PropertyDescriptor,) {
   console.log('Method Decorator')
+  console.log("Target : ")
   console.log(target)
   console.log(name)
+  console.log("Descriptor : ")
   console.log(descriptor)
 }
 
+// Parameter decorators take 3 arguments (the target or prototype of the object if its an instance property
+// or constructor funtion if its a static property , the name of the method where the parameter is 
+// and the position of the parameter)
 function Log4(target: any, name: string | symbol, position: number) {
   console.log('Parameter Decorator')
+  console.log("Target : ")
   console.log(target)
   console.log(name)
   console.log(position)
